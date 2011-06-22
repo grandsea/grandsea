@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false"
+	package="com.hundsun.zhouxh.study.jbpm.task" default-access="field">
+
+	<subclass name="CustomTaskImpl" extends="org.jbpm.pvm.internal.task.TaskImpl"
+		discriminator-value="C">
+		<property name="days" column="DAYS_" type="int" />
+	</subclass>
+	<subclass name="CustomTaskImpl2" extends="org.jbpm.pvm.internal.task.TaskImpl"
+		discriminator-value="D">
+		<property name="value" column="VALUE_" type="string" />
+	</subclass>
+</hibernate-mapping>

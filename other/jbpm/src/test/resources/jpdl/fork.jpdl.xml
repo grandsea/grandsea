@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="AsyncFork" xmlns="http://jbpm.org/4.4/jpdl">
+
+    <start g="22,69,80,40">
+        <transition to="fork"/>
+    </start>
+
+    <fork g="99,68,80,40" name="fork">
+      <transition g="122,41:" to="自定义任务1"/>
+      <transition g="123,142:" to="自定义任务2"/>
+    </fork>
+
+	<customTask name="自定义任务1" assignee="admin" taskType="com.hundsun.zhouxh.study.jbpm.task.CustomTaskImpl">
+		<transition to="join"/>
+	</customTask>
+
+	<customTask name="自定义任务2" assignee="admin" taskType="com.hundsun.zhouxh.study.jbpm.task.CustomTaskImpl">
+		<transition to="join"/>
+	</customTask>
+  
+  <join g="274,66,80,40" name="join">
+    <transition to="end"/>
+  </join>
+
+  <end g="353,67,48,48" name="end"/>
+
+</process>

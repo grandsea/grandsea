@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     2010-11-9 下午01:26:53                                                        
+
+     myTaskTest    
+     测试自定义Task
+                   
+     zhouxh                                                                
+     ====================================================================== -->
+<project name="myTaskTest" default="default">
+    <description>
+            测试自定义Task
+    </description>
+	<taskdef name="mytask" classname="com.zhouxh.ant.MyAntTask" classpath="target/classes"/>
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="depends" description="测试自定义Task">
+        
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	<mytask active="false" name="good">
+
+    	</mytask>
+    </target>
+
+</project>

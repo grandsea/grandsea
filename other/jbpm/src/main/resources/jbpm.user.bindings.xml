@@ -1,0 +1,3 @@
+<bindings>
+	<activity binding="com.hundsun.zhouxh.study.jbpm.activity.CustomTaskBinding" />
+</bindings>

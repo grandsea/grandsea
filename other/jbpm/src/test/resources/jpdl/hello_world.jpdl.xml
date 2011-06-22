@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="helloWorld" xmlns="http://jbpm.org/4.0/jpdl">
+	<start g="24,72,80,40">
+		<transition to="printHelloWorld"/>
+	</start>
+	<java class="com.hundsun.zhouxh.study.jbpm.Printer" method="printHelloWorld" name="printHelloWorld" g="132,72,138,40">
+		<transition to="自定义任务"/>
+	</java>
+	<customTask name="自定义任务" assignee="admin" taskType="com.hundsun.zhouxh.study.jbpm.task.CustomTaskImpl">
+		<transition to="自定义任务2"/>
+	</customTask>
+	<customTask name="自定义任务2" assignee="admin" taskType="com.hundsun.zhouxh.study.jbpm.task.CustomTaskImpl2">
+		<transition to="theEnd"/>
+	</customTask>
+	<end name="theEnd" g="339,70,80,40"/>
+</process>

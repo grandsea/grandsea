@@ -1,0 +1,91 @@
+<!-- Do NOT put any DOCTYPE here unless you want problems in IEs. -->
+<html>
+
+<!-- Each valid html page must have a head; let's create one. -->
+<head>
+  <!-- The following line defines content type and utf-8 as character set. -->
+  <!-- If you want your application to work flawlessly with various local -->
+  <!-- characters, just make ALL strings, on the page, json and database utf-8. -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <!-- Ext relies on its default css so include it here. -->
+  <!-- This must come BEFORE javascript includes! -->
+  <link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css">
+
+  <!-- Include here your own css files if you have them. -->
+
+  <!-- First of javascript includes must be an adapter... -->
+  <script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+
+  <!-- ...then you need the Ext itself, either debug or production version. -->
+  <script type="text/javascript" src="ext/ext-all-debug.js"></script>
+
+  <!-- Include here your extended classes if you have some. -->
+
+  <!-- Include here you application javascript file if you have it. -->
+
+  <!-- Set a title for the page (id is not necessary). -->
+  <title id="page-title">Title</title>
+
+  <!-- You can have onReady function here or in your application file. -->
+  <!-- If you have it in your application file delete the whole -->
+  <!-- following script tag as we must have only one onReady. -->
+  <script type="text/javascript">
+
+  // Path to the blank image must point to a valid location on your server
+  Ext.BLANK_IMAGE_URL = 'ext/resources/images/default/s.gif';
+
+  // Main application entry point
+  Ext.onReady(function() {
+	var myData = [
+		['Apple',29.89,0.24,0.81,'9/1 12:00am'],
+		['Ext',83.81,0.28,0.34,'9/12 12:00am'],
+		['Google',71.72,0.02,0.03,'10/1 12:00am'],
+		['Microsoft',52.55,0.01,0.02,'7/4 12:00am'],
+		['Yahoo!',29.01,0.42,1.47,'5/22 12:00am']
+	];
+
+	var ds = new Ext.data.Store({
+		proxy: new Ext.data.MemoryProxy(myData),
+		reader: new Ext.data.ArrayReader({id: 0}, [
+			{name: 'company'},
+			{name: 'price', type: 'float'},
+			{name: 'change', type: 'float'},
+			{name: 'pctChange', type: 'float'},
+			{name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}
+		])
+	});
+	ds.load();
+
+	var colModel = new Ext.grid.ColumnModel([
+		{header: "Company", width: 120, sortable: true, dataIndex: 'company'},
+		{header: "Price", width: 90, sortable: true, dataIndex: 'price'},
+		{header: "Change", width: 90, sortable: true, dataIndex: 'change'},
+		{header: "% Change", width: 90, sortable: true, dataIndex: 'pctChange'},
+		{header: "Last Updated", width: 120, sortable: true,
+			renderer: Ext.util.Format.dateRenderer('m/d/Y'),
+                        dataIndex: 'lastChange'}
+	]);
+
+	var grid = new Ext.grid.GridPanel({
+            ds: ds,
+            cm: colModel,
+            height: 200,
+            width: 500,
+            stripeRows: true,
+            title: 'index'
+        });
+	grid.render('grid-example');
+	grid.getSelectionModel().selectFirstRow();
+	grid.show();
+    });
+  </script>
+
+<!-- Close the head -->
+</head>
+
+<!-- You can leave the body empty in many cases, or you write your content in it. -->
+<body></body>
+<div id ="grid-example" ></div>
+<!-- Close html tag at last -->
+</html>

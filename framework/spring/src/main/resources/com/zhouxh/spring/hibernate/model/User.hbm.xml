@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.zhouxh.spring.hibernate.model.User" table="TEST_USER" lazy="false">
+		<id column="DBID_" name="id" type="long">
+			<generator class="native"/>
+		</id>
+<property column="NAME_" length="1020" name="name" type="string"/>
+</class>
+</hibernate-mapping>

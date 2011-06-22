@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+    Drools5 Integration Helper
+    Copyright (C) 2009  Mathieu Boretti mathieu.boretti@gmail.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ */
+ --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+    <artifactId>framework</artifactId>
+    <groupId>com.zhouxh</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+	<groupId>com.grandsea</groupId>
+	<artifactId>drools</artifactId>
+	<!-- This packaging enables execution of drools goals automatically. -->
+	<packaging>jar-drools</packaging>
+	<version>1.0-SNAPSHOT</version>
+	
+	<dependencies>
+		<dependency>
+			<!-- This library provides the annnotations and runtime frameworks. -->
+			<groupId>org.boretti.drools.integration</groupId>
+			<artifactId>drools5-integration-helper-library</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- Only JDK 1.6 is supported -->
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- The plugin integration -->
+				<artifactId>drools5-integration-helper-maven-plugin</artifactId>
+				<groupId>org.boretti.drools.integration</groupId>
+				<version>1.3.0</version>
+				<extensions>true</extensions>
+		    </plugin>
+		</plugins>
+	</build>
+</project>

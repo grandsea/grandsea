@@ -1,0 +1,21 @@
+<process name="ForEach" xmlns="http://jbpm.org/4.4/jpdl">
+
+   <start g="28,61,48,48" name="start1">
+      <transition to="foreach1"/>
+   </start>
+
+   <foreach var="human" in="#{humans}" g="111,60,48,48" name="foreach1">
+      <transition to="Collect reports"/>
+   </foreach>
+
+	<customTask name="Collect reports" assignee="#{human}" taskType="com.hundsun.zhouxh.study.jbpm.task.CustomTaskImpl">
+		<transition to="join1"/>
+	</customTask>
+
+   <join g="343,59,48,48" multiplicity="#{human_count}" name="join1">
+      <transition to="end1"/>
+   </join>
+
+   <end g="433,60,48,48" name="end1"/>
+
+</process>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"  
+    xmlns:dwra="http://www.directwebremoting.org/schema/spring-dwr-annotations"  
+    xsi:schemaLocation="  
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd  
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd  
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd  
+            http://www.directwebremoting.org/schema/spring-dwr  
+            http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd  
+            http://www.directwebremoting.org/schema/spring-dwr-annotations  
+            http://www.directwebremoting.org/schema/spring-dwr-annotations.xsd">  
+      
+    <context:annotation-config/>  
+      
+    <context:component-scan base-package="mvc" />  
+  
+    <!-- <bean  
+        class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />  
+   -->
+       
+        <bean  
+        class="mvc.FlowAnnotationMothedHandlerAdapter" />  
+ 
+  
+    <bean  
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver"  
+        p:prefix="" p:suffix=".jsp" />  
+  
+    <!-- DWR 
+    <dwr:configuration>  
+        <dwr:convert class="mvc.User" type="bean" />  
+        <dwr:signatures>  
+            <![CDATA[ 
+                import java.util.Map; 
+                ]]>  
+        </dwr:signatures>  
+    </dwr:configuration>  
+  
+    <dwr:controller id="dwrController" debug="true" />  
+     --> 
+  
+    <!--  New DWR capabilities  
+    <dwra:url-mapping />  
+    <dwra:annotation-config />  
+    -->
+</beans>  
